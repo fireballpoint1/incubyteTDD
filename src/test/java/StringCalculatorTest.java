@@ -8,4 +8,10 @@ public class StringCalculatorTest {
     public void givenEmptyStringReturnZero() {
         assertEquals(add(""),0);
     }
+
+    @Test
+    public void givenSingleNumberReturnNumber() {
+        assertEquals(add("1"),1);
+    }
+
 }
