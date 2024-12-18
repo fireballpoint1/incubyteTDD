@@ -7,7 +7,11 @@ public class StringCalculator {
         int sum=0;
         for (String number : numbersArray) {
             if (!number.trim().isEmpty()) {
-                sum += Integer.parseInt(number);
+                int num = Integer.parseInt(number);
+                if(num < 0) {
+                    throw new IllegalArgumentException("Negatives not allowed: " + num);
+                }
+                sum += num;
             }
         }
         return sum;
