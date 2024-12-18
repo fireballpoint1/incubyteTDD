@@ -33,4 +33,13 @@ public class StringCalculatorTest {
     public void givenCustomDelimiterReturnSum() {
         assertEquals(add("//;\n1;2"),3);
     }
+
+    @Test
+    public void givenNegativeNumberThrowException() {
+        try {
+            add("-1,2");
+        } catch (IllegalArgumentException e) {
+            assertEquals(e.getMessage(), "Negatives not allowed: -1");
+        }
+    }
 }
