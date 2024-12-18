@@ -28,4 +28,9 @@ public class StringCalculatorTest {
     public void givenNewLineDelimiterReturnSum() {
         assertEquals(add("1\n2,3"),6);
     }
+
+    @Test
+    public void givenCustomDelimiterReturnSum() {
+        assertEquals(add("//;\n1;2"),3);
+    }
 }
