@@ -14,4 +14,8 @@ public class StringCalculatorTest {
         assertEquals(add("1"),1);
     }
 
+    @Test
+    public void givenTwoNumbersReturnSum() {
+        assertEquals(add("1,2"),3);
+    }
 }
