@@ -23,4 +23,9 @@ public class StringCalculatorTest {
     public void givenMultipleNumbersReturnSum() {
         assertEquals(add("1,2,3,4,5"),15);
     }
+
+    @Test
+    public void givenNewLineDelimiterReturnSum() {
+        assertEquals(add("1\n2,3"),6);
+    }
 }
