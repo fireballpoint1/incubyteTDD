@@ -11,27 +11,27 @@ public class StringCalculatorTest {
 
     @Test
     public void givenSingleNumberReturnNumber() {
-        assertEquals(add("1"),1);
+        assertEquals(1, add("1"));
     }
 
     @Test
     public void givenTwoNumbersReturnSum() {
-        assertEquals(add("1,2"),3);
+        assertEquals(3,add("1,2"));
     }
 
     @Test
     public void givenMultipleNumbersReturnSum() {
-        assertEquals(add("1,2,3,4,5"),15);
+        assertEquals(15,add("1,2,3,4,5"));
     }
 
     @Test
     public void givenNewLineDelimiterReturnSum() {
-        assertEquals(add("1\n2,3"),6);
+        assertEquals(6, add("1\n2,3"));
     }
 
     @Test
     public void givenCustomDelimiterReturnSum() {
-        assertEquals(add("//;\n1;2"),3);
+        assertEquals(3, add("//;\n1;2"));
     }
 
     @Test
@@ -39,7 +39,7 @@ public class StringCalculatorTest {
         try {
             add("-1,2");
         } catch (IllegalArgumentException e) {
-            assertEquals(e.getMessage(), "Negatives not allowed: -1");
+            assertEquals("Negatives not allowed: -1", e.getMessage());
         }
     }
 
@@ -48,7 +48,7 @@ public class StringCalculatorTest {
         try {
             add("-1,2,-3");
         } catch (IllegalArgumentException e) {
-            assertEquals(e.getMessage(), "Negatives not allowed: -1,-3");
+            assertEquals("Negatives not allowed: -1,-3", e.getMessage());
         }
     }
 }
