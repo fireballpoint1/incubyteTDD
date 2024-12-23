@@ -1,23 +1,23 @@
 package org.example;
 
+import java.util.Arrays;
+
 public class StringCalculator {
     public static int add(String numbers) {
         String defaultDelimiter = "[\n,]";
-        String[] numbersArray = getNumbersArray(numbers, defaultDelimiter);
+        int[] numbersArray = getNumbersArray(numbers, defaultDelimiter);
         int sum=0;
-        for (String number : numbersArray) {
-            if (!number.trim().isEmpty()) {
-                int num = Integer.parseInt(number);
-                if(num < 0) {
-                    throw new IllegalArgumentException("Negatives not allowed: " + num);
-                }
-                sum += num;
-            }
+        int[] negativeNumbers = Arrays.stream(numbersArray).filter(n -> n < 0).toArray();
+        if(negativeNumbers.length > 0) {
+            throw new IllegalArgumentException("Negatives not allowed: " + Arrays.toString(negativeNumbers).replace("[", "").replace("]", "").replace(" ", ""));
+        }
+        for (int number : numbersArray) {
+                sum += number;
         }
         return sum;
     }
 
-    protected static String[] getNumbersArray(String numbers, String defaultDelimiter) {
+    protected static int[] getNumbersArray(String numbers, String defaultDelimiter) {
         String[] numbersArray;
         if(numbers.startsWith("//")) {
             String[] parts = numbers.split("\n", 2);
@@ -26,7 +26,7 @@ public class StringCalculator {
         } else {
             numbersArray = numbers.split((defaultDelimiter));
         }
-        return numbersArray;
+        return Arrays.stream(numbersArray).mapToInt(str -> str.isEmpty() ? 0 : Integer.parseInt(str)).toArray();
     }
 
 }
