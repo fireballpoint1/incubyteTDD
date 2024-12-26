@@ -36,6 +36,11 @@ public class StringCalculatorTest {
     }
 
     @Test
+    public void givenAsteriskCustomDelimiterReturnProduct() {
+        assertEquals(2, add("//*\n1*2"));
+    }
+
+    @Test
     public void givenNegativeNumberThrowException() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             add("-1,2");
