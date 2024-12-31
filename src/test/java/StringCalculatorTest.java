@@ -57,4 +57,15 @@ public class StringCalculatorTest {
         String exceptionMessage = exception.getMessage();
         assertEquals("Negatives not allowed: -1,-3", exceptionMessage);
     }
+
+    // in case of a number as a delimiter throw an illegal argument exception
+    @Test
+    public void givenNumberAsDelimiterThrowException(){
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            add("//2\n122");
+        });
+        String exceptionMessage = exception.getMessage();
+        assertEquals("Numbers as custom delimiter not allowed: 2", exceptionMessage);
+    }
+
 }
