@@ -7,6 +7,9 @@ public class StringCalculator {
     public static int add(String numbers) {
         String defaultDelimiter = "[\n,]";
         String delimiter = getDelimiter(numbers,defaultDelimiter);
+        if(delimiter.matches("-?\\d+")){
+            throw new IllegalArgumentException("Numbers as custom delimiter not allowed: " + delimiter);
+        }
         int[] numbersArray = getNumbersArray(numbers, delimiter);
         int resultant=0;
         int[] negativeNumbers = Arrays.stream(numbersArray).filter(n -> n < 0).toArray();
