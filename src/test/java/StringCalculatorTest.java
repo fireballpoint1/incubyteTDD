@@ -68,4 +68,13 @@ public class StringCalculatorTest {
         assertEquals("Numbers as custom delimiter not allowed: 2", exceptionMessage);
     }
 
+    @Test
+    public void givenNegativeNumberAsDelimiterThrowException(){
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            add("//-2\n1-22");
+        });
+        String exceptionMessage = exception.getMessage();
+        assertEquals("Numbers as custom delimiter not allowed: -2", exceptionMessage);
+    }
+
 }
